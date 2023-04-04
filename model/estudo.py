@@ -23,7 +23,7 @@ class Estudo(Base):
     def __init__(self, disciplina:str,conteudo:str,contato:str,primeira_revisao:str,segunda_revisao:str,questao_feita:int, questao_acertada:int,
                  data_insercao:Union[DateTime, None] = None):
         """
-        Cria um Estudo
+        Cria um Estudo de um Disciplina
 
         Arguments:
             disciplina: nome da disciplina.
