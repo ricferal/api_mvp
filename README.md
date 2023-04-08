@@ -1,9 +1,8 @@
 # Minha API
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
+Faz parte do projeto de **Desenvolvimento do MVP** que tem como contexto colocar em prática o conteúdo apresentado ao longo das aulas com o desenvolvimento de um back-end e de um front-end, explorando algumas dessas key constraints: (I) a separação de responsabilidades entre cliente e servidor; (II) a uniformidade de interfaces; (III) o desenvolvimento de sistemas em camadas; (IV) a ausência de estados; e (V) a execução de código sob demanda.
 
-O objetivo aqui é ilutsrar o conteúdo apresentado ao longo das três aulas da disciplina.
-
+Projeto Gerenciador de Estudo faz parte da avaliação da Pós Graduação da Disciplina **Desenvolvimento do MVP** da PUC-Rio.
 ---
 ## Como executar 
 
@@ -29,7 +28,7 @@ Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reloa
 automaticamente após uma mudança no código fonte. 
 
 ```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
+(env)$ flask run --host 0.0.0.0 --port 5001 --reload
 ```
 
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+Abra o [http://localhost:5000/#/](http://localhost:5001/#/) no navegador para verificar o status da API em execução.

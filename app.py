@@ -124,13 +124,15 @@ def del_estudo(query: EstudoBuscaSchema):
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    estudo_disciplina = unquote(unquote(query.disciplina))
+   #estudo_disciplina = unquote(unquote(query.disciplina))
+    estudo_disciplina =query.id
+
     print(estudo_disciplina)
     logger.debug(f"Deletando dados sobre estudo #{estudo_disciplina}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Estudo).filter(Estudo.disciplina == estudo_disciplina).delete()
+    count = session.query(Estudo).filter(Estudo.id == estudo_disciplina).delete()
     session.commit()
 
     if count:
