@@ -1,15 +1,12 @@
 -- SQLite
 
-
---DELETE  FROM produto
---WHERE pk_produto = 2
+SELECT datetime('now','localtime');
+SELECT * FROM ESTUDO
 
 -- SQLite
-INSERT INTO produto
- (nome, quantidade, valor)
-VALUES ("PRODUTO1",12,13);
+SELECT pk_estudo, disciplina, conteudo, contato, primeira_revisao, segunda_revisao, questao_feita, questao_acertada, data_insercao
+FROM estudo;
 
-UPDATE produto SET data_insercao = datetime('now','localtime')
-WHERE pk_produto = 1
 
-SELECT datetime('now','localtime');
+
+

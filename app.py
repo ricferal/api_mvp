@@ -43,7 +43,8 @@ def add_estudo(form: EstudoSchema):
         primeira_revisao=form.primeira_revisao,
         segunda_revisao=form.segunda_revisao,
         questao_feita=form.questao_feita,
-        questao_acertada=form.questao_acertada
+        questao_acertada=form.questao_acertada,
+       # data_primeira_revisao = form.data_primeira_revisao
         )
     logger.debug(f"Adicionando estudo cuja disciplina é de nome: '{estudo.disciplina}'")
     try:
@@ -124,13 +125,15 @@ def del_estudo(query: EstudoBuscaSchema):
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    estudo_disciplina = unquote(unquote(query.disciplina))
+   #estudo_disciplina = unquote(unquote(query.disciplina))
+    estudo_disciplina =query.id
+
     print(estudo_disciplina)
     logger.debug(f"Deletando dados sobre estudo #{estudo_disciplina}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Estudo).filter(Estudo.disciplina == estudo_disciplina).delete()
+    count = session.query(Estudo).filter(Estudo.id == estudo_disciplina).delete()
     session.commit()
 
     if count:

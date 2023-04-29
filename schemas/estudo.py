@@ -1,20 +1,34 @@
+import datetime
 from pydantic import BaseModel
 from typing import Optional, List
 from model.estudo import Estudo
+from sqlalchemy import DateTime,Column,Date
+from datetime import date
+from datetime import datetime
+from pydantic import BaseModel
+from sqlalchemy.sql import func
+
+
+
 
 
 class EstudoSchema(BaseModel):
-    """ Define como um novo produto a ser inserido deve ser representado
+    """ Define como um nova disciplina estudada a ser inserido deve ser representado
     """
     disciplina: str = "Desenvolvimento Full Stack"
     conteudo: str = "TESTE"
     contato:  str = "sim"
-    primeira_revisao: str = "NAO"
-    segunda_revisao : str = "SIM"
+    primeira_revisao: str = "03/03/2023"
+    segunda_revisao : str = "11/03/2023"
     questao_feita   :int = 12
     questao_acertada: int = 10
-    
+    # data_primeira_revisao:  Optional [Date] = None
+     #data_primeira_revisao:  Date = None 
+    #data_primeira_revisao:  Date = datetime(2022, 5, 27, 12, 30, 0, 0)
 
+    #DateTime(default=datetime.datetime.now())
+
+    
 
 class EstudoBuscaSchema(BaseModel):
     """ Define como deve ser a estrutura que representa a busca. Que será
@@ -56,17 +70,20 @@ class EstudoViewSchema(BaseModel):
     disciplina: str = "ARQUITETURA"
     conteudo: str = "DDD, arquitetura hexagonal, microsserviços (orquestração de serviços e API gateway) e containers."
     contato: str = "teste"
-    primeiraRevisao: str = "teste"
-    segundaRevisao: str = "teste"
+    primeiraRevisao: str = "01/02/2023"
+    segundaRevisao: str = "01/03/2023"
     questao_feita: int = 30
     questao_acertada: int = 20
+    #data_primeira_revisao: Date = datetime(2022, 5, 27, 12, 30, 0, 0)
+    # data_primeira_revisao: Date = None
+
 
 
 class EstudoDelSchema(BaseModel):
     """ Define como deve ser a estrutura do dado retornado após uma requisição
         de remoção.
     """
-    mesage: str
+    message: str
     disciplina: str
 
 def apresenta_estudo(estudo: Estudo):
@@ -81,7 +98,7 @@ def apresenta_estudo(estudo: Estudo):
         "primeira_revisao": estudo.primeira_revisao,
         "segunda_revisao": estudo.segunda_revisao,
         "questao_feita": estudo.questao_feita,
-        "questao_acertada": estudo.questao_acertada
-
+        "questao_acertada": estudo.questao_acertada,
+        #"data_primeira_revisao": estudo.data_primeira_revisao        
        
     }

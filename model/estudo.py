@@ -1,8 +1,13 @@
 from datetime import datetime
 from typing import Union
-from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy import Column, DateTime, Date,Float, Integer, String,Date
 
 from  model import Base
+import datetime
+#from datetime import date
+#from datetime import datetime
+from sqlalchemy.sql import func
+
 
 
 class Estudo(Base):
@@ -17,11 +22,15 @@ class Estudo(Base):
     questao_feita = Column(Integer)
     questao_acertada = Column(Integer)
 
-    data_insercao = Column(DateTime, default=datetime.now())
+    data_insercao = Column(DateTime)
+
+    #data_primeira_revisao = Column(Date)
+    #data_primeira_revisao = Column(DateTime(timezone=True), server_default=func.now())
 
 
     def __init__(self, disciplina:str,conteudo:str,contato:str,primeira_revisao:str,segunda_revisao:str,questao_feita:int, questao_acertada:int,
-                 data_insercao:Union[DateTime, None] = None):
+                  data_insercao:Union[DateTime, None] = None,data_primeira_revisao:Union[DateTime, None] = None):
+                 # data_primeira_revisao:Union[Date, None] = None):
         """
         Cria um Estudo de um Disciplina
 
@@ -34,6 +43,8 @@ class Estudo(Base):
             questao_feita: qtde de questões feitas
             questao_acertada: qtde de questões acertadas
             data_insercao: data de quando a disciplina foi inserido à base
+            data_primeira_revisao: data de quando revisou a primeira vez
+
         """
         
         self.disciplina = disciplina
@@ -43,6 +54,7 @@ class Estudo(Base):
         self.segunda_revisao = segunda_revisao
         self.questao_feita = questao_feita
         self.questao_acertada = questao_acertada
+        self.data_primeira_revisao = data_primeira_revisao
        
 
         # se não for informada, será o data exata da inserção no banco
