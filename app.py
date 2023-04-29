@@ -43,7 +43,8 @@ def add_estudo(form: EstudoSchema):
         primeira_revisao=form.primeira_revisao,
         segunda_revisao=form.segunda_revisao,
         questao_feita=form.questao_feita,
-        questao_acertada=form.questao_acertada
+        questao_acertada=form.questao_acertada,
+       # data_primeira_revisao = form.data_primeira_revisao
         )
     logger.debug(f"Adicionando estudo cuja disciplina é de nome: '{estudo.disciplina}'")
     try:
