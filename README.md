@@ -6,7 +6,7 @@ Projeto Gerenciador de Estudo faz parte da avaliação da Pós Graduação da Di
 
 Escolhi implementar um Gerenciador de Estudo que tem como objetivo fazer o controle de determinadas disciplinas que desejo realizar um estudo para vários tipos de propósito:
 concurso, vestibular, estudo de línguas, etc.
----
+
 ## Como executar 
 
 
