@@ -3,6 +3,9 @@
 Faz parte do projeto de **Desenvolvimento do MVP** que tem como contexto colocar em prática o conteúdo apresentado ao longo das aulas com o desenvolvimento de um back-end e de um front-end, explorando algumas dessas key constraints: (I) a separação de responsabilidades entre cliente e servidor; (II) a uniformidade de interfaces; (III) o desenvolvimento de sistemas em camadas; (IV) a ausência de estados; e (V) a execução de código sob demanda.
 
 Projeto Gerenciador de Estudo faz parte da avaliação da Pós Graduação da Disciplina **Desenvolvimento do MVP** da PUC-Rio.
+
+Escolhi implementar um Gerenciador de Estudo que tem como objetivo fazer o controle de determinadas disciplinas que desejo realizar um estudo para vários tipos de propósito:
+concurso, vestibular, estudo de línguas, etc.
 ---
 ## Como executar 
 
