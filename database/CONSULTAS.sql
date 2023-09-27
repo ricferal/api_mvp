@@ -8,5 +8,11 @@ SELECT pk_estudo, disciplina, conteudo, contato, primeira_revisao, segunda_revis
 FROM estudo;
 
 
+SELECT *
+FROM estudo;
+
+--DELETE FROM estudo;
+
+
 
 

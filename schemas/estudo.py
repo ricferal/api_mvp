@@ -22,6 +22,8 @@ class EstudoSchema(BaseModel):
     segunda_revisao : str = "11/03/2023"
     questao_feita   :int = 12
     questao_acertada: int = 10
+    banca:  str = "banca"
+    endereco:  str = "endereco"
     # data_primeira_revisao:  Optional [Date] = None
      #data_primeira_revisao:  Date = None 
     #data_primeira_revisao:  Date = datetime(2022, 5, 27, 12, 30, 0, 0)
@@ -58,6 +60,10 @@ def apresenta_estudos(estudos: List[Estudo]):
             "segunda_revisao": estudo.segunda_revisao,
             "questao_feita": estudo.questao_feita,
             "questao_acertada": estudo.questao_acertada,
+            "banca": estudo.banca,
+            "endereco": estudo.endereco,
+
+
         })
 
     return {"estudos": result}
@@ -74,6 +80,10 @@ class EstudoViewSchema(BaseModel):
     segundaRevisao: str = "01/03/2023"
     questao_feita: int = 30
     questao_acertada: int = 20
+    banca: str = "Banca Organizadora"
+    endereco: str = "Endereco Organizadora"
+
+
     #data_primeira_revisao: Date = datetime(2022, 5, 27, 12, 30, 0, 0)
     # data_primeira_revisao: Date = None
 
@@ -99,6 +109,10 @@ def apresenta_estudo(estudo: Estudo):
         "segunda_revisao": estudo.segunda_revisao,
         "questao_feita": estudo.questao_feita,
         "questao_acertada": estudo.questao_acertada,
+        "banca": estudo.banca,
+        "endereco": estudo.endereco,
+
+
         #"data_primeira_revisao": estudo.data_primeira_revisao        
        
     }
