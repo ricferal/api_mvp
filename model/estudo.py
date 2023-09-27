@@ -22,13 +22,18 @@ class Estudo(Base):
     questao_feita = Column(Integer)
     questao_acertada = Column(Integer)
 
+    banca = Column(String)
+    endereco = Column(String)
+
     data_insercao = Column(DateTime)
+    
+
 
     #data_primeira_revisao = Column(Date)
     #data_primeira_revisao = Column(DateTime(timezone=True), server_default=func.now())
 
 
-    def __init__(self, disciplina:str,conteudo:str,contato:str,primeira_revisao:str,segunda_revisao:str,questao_feita:int, questao_acertada:int,
+    def __init__(self, disciplina:str,conteudo:str,contato:str,primeira_revisao:str,segunda_revisao:str,questao_feita:int, questao_acertada:int,banca:str,endereco:str,
                   data_insercao:Union[DateTime, None] = None,data_primeira_revisao:Union[DateTime, None] = None):
                  # data_primeira_revisao:Union[Date, None] = None):
         """
@@ -44,6 +49,8 @@ class Estudo(Base):
             questao_acertada: qtde de questões acertadas
             data_insercao: data de quando a disciplina foi inserido à base
             data_primeira_revisao: data de quando revisou a primeira vez
+            Banca organizadora: de onde fez as questões
+
 
         """
         
@@ -55,7 +62,10 @@ class Estudo(Base):
         self.questao_feita = questao_feita
         self.questao_acertada = questao_acertada
         self.data_primeira_revisao = data_primeira_revisao
-       
+        self.banca = banca
+        self.endereco = endereco
+
+
 
         # se não for informada, será o data exata da inserção no banco
         if data_insercao:

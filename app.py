@@ -44,6 +44,8 @@ def add_estudo(form: EstudoSchema):
         segunda_revisao=form.segunda_revisao,
         questao_feita=form.questao_feita,
         questao_acertada=form.questao_acertada,
+        banca = form.banca,
+        endereco = form.endereco,
        # data_primeira_revisao = form.data_primeira_revisao
         )
     logger.debug(f"Adicionando estudo cuja disciplina é de nome: '{estudo.disciplina}'")
@@ -148,3 +150,55 @@ def del_estudo(query: EstudoBuscaSchema):
 
 
 
+@app.put('/estudo', tags=[estudo_tag],
+          responses={"200": EstudoViewSchema, "409": ErrorSchema, "400": ErrorSchema})
+def atualiza_estudo(form: EstudoSchema):
+    """Edita um novo Estudo/disciplina já salvo na base de dados
+
+    Retorna uma representação dos estudos/disciplinas.
+    """
+    
+    nome_estudo = form.disciplina # nome do estudo/disciplina que será atualizado
+    
+    logger.debug(f"Atualizando estudo/disicplina de nome: '{form.disciplina}'")
+    try:
+        # criando conexão com a base
+        session = Session()
+        # buscando o produto na base de dados
+        updated_estudo = session.query(Estudo).filter(Estudo.disciplina == nome_estudo).first()
+
+        # se o produto não estiver cadastrado na base de dados
+        if not updated_estudo:
+            error_msg = "Estudo/Disciplina não cadastrada no banco de dados :/"
+            return {"mesage": error_msg}, 404
+        else:
+            # se foi informado um novo valor referente a quantidade
+            if form.contato:
+                updated_estudo.contato = form.contato
+            
+            # se foi informado um novo valor referente ao valor
+            if form.questao_feita:
+                updated_estudo.questao_feita = form.questao_feita 
+                
+             # se foi informado um novo valor referente ao valor
+            if form.questao_acertada:
+                updated_estudo.questao_acertada = form.questao_acertada 
+                
+            session.add(updated_estudo) #atualizando o estudo/disciplina na base de dados
+
+            # efetivando o camando de atualização do item na tabela
+            session.commit()
+            logger.debug(f"Atualizando estudo de nome de disciplina: '{form.disciplina}'")
+            return apresenta_estudo(updated_estudo), 200
+
+    except IntegrityError as e:
+        # como a duplicidade do nome disciplina é a provável razão do IntegrityError
+        error_msg = "Estudo/Discplina de mesmo nome já salvo na base :/"
+        logger.warning(f"Erro ao adicionar estudo/disciplina '{form.disciplina}', {error_msg}")
+        return {"mesage": error_msg}, 409
+
+    except Exception as e:
+        # caso um erro fora do previsto
+        error_msg = "Não foi possível salvar novo item :/"
+        logger.warning(f"Erro ao adicionar disciplina '{form.disciplina}', {error_msg}")
+        return {"mesage": error_msg}, 400
